@@ -1,0 +1,11 @@
+C:\Users\YPN-1255\source\repos\CreateMosFileDeneme\CreateMosFileDeneme\bin\Debug\CreateMosFileDeneme.exe.config
+C:\Users\YPN-1255\source\repos\CreateMosFileDeneme\CreateMosFileDeneme\bin\Debug\CreateMosFileDeneme.exe
+C:\Users\YPN-1255\source\repos\CreateMosFileDeneme\CreateMosFileDeneme\bin\Debug\CreateMosFileDeneme.pdb
+C:\Users\YPN-1255\source\repos\CreateMosFileDeneme\CreateMosFileDeneme\obj\Debug\CreateMosFileDeneme.csproj.AssemblyReference.cache
+C:\Users\YPN-1255\source\repos\CreateMosFileDeneme\CreateMosFileDeneme\obj\Debug\CreateMosFileDeneme.Form1.resources
+C:\Users\YPN-1255\source\repos\CreateMosFileDeneme\CreateMosFileDeneme\obj\Debug\CreateMosFileDeneme.Properties.Resources.resources
+C:\Users\YPN-1255\source\repos\CreateMosFileDeneme\CreateMosFileDeneme\obj\Debug\CreateMosFileDeneme.csproj.GenerateResource.cache
+C:\Users\YPN-1255\source\repos\CreateMosFileDeneme\CreateMosFileDeneme\obj\Debug\CreateMosFileDeneme.csproj.CoreCompileInputs.cache
+C:\Users\YPN-1255\source\repos\CreateMosFileDeneme\CreateMosFileDeneme\obj\Debug\CreateMosFileDeneme.exe
+C:\Users\YPN-1255\source\repos\CreateMosFileDeneme\CreateMosFileDeneme\obj\Debug\CreateMosFileDeneme.pdb
+C:\Users\YPN-1255\source\repos\CreateMosFileDeneme\CreateMosFileDeneme\obj\Debug\CreateMosFileDeneme.csproj.ResolveComReference.cache
