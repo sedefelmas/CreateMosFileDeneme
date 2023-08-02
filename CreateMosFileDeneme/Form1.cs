@@ -71,7 +71,7 @@ namespace CreateMosFileDeneme
                         nodeFolderPath = projectFolderPath + lists[i][0];
                         if (Directory.Exists(nodeFolderPath))
                         {
-                            Directory.Delete(nodeFolderPath);
+                            Directory.Delete(nodeFolderPath, true);
                             MessageBox.Show("Mevcut olan " + lists[i][0] + " klasörü silindi.");
                             listBoxIslemler.Items.Add("Mevcut olan " + lists[i][0] + " klasörü silindi.");
                         }
@@ -121,32 +121,112 @@ namespace CreateMosFileDeneme
             {
                 for (int j = 1; j < lists[i].Length; j++)
                 {
-                    if(lists[i][j] == string.Empty)
+                    if(lists[i][j] == null)
                     {
-                        value = "-";
+                        lists[i][j] = "-";
                     }
                     else
                     {
-                        value = lists[i][j];
+                        if (lists[0][j].StartsWith("IPV6"))
+                        {
+                            string [] seperate = lists[i][j].Split(':');
+                            for (int k = 0; k < 8; k++)
+                            {
+                                if (seperate[k].StartsWith("0000"))
+                                {
+                                    value += ":";
+                                }
+                                else if (seperate[k].StartsWith("000"))
+                                {
+                                    value += seperate[k].Substring(3) + ":";
+                                }
+                                else if (seperate[k].StartsWith("00"))
+                                {
+                                    value += seperate[k].Substring(2) + ":";
+                                }
+                                else if (seperate[k].StartsWith("0"))
+                                {
+                                    value += seperate[k].Substring(1) + ":";
+                                }
+                                else
+                                {
+                                    value += seperate[k] + ":";
+                                }
+                            }
+                            while (value.Contains(":::"))
+                            {
+                                value = value.Replace(":::", "::");
+                            }
+                            lists[i][j] = value.Substring(0,value.Length-1);
+
+                            value = "";
+
+
+
+                            //for (int k = 0; k < lists[i][j].Length; k+=5)
+                            //{
+                            //    if (lists[i][j].Substring(k, 4) == "0000")
+                            //    {
+                            //        value = lists[i][j].Substring(k + 4, 1);
+                            //    }
+                            //    else if(lists[i][j].Substring(k, 4).StartsWith("000")){
+                            //        value = lists[i][j].Substring(k + 3, 2);
+                            //    }
+                            //    else if(lists[i][j].Substring(k, 4).StartsWith("00"))
+                            //    {
+                            //        value = lists[i][j].Substring(k + 2, 3);
+                            //    }
+                            //    else if(lists[i][j].Substring(k, 4).StartsWith("0"))
+                            //    {
+                            //        value = lists[i][j].Substring(k + 1, 4);
+                            //    }
+                            //    else
+                            //    {
+                            //        if (lists[i][j].Substring(k, 5).Length < 5)
+                            //        {
+                            //            value = lists[i][j].Substring(k, 4);
+                            //        }
+                            //        else
+                            //        {
+                            //            value = lists[i][j].Substring(k, 5);
+                            //        }
+                            //    }
+                            //    lists[i][j] += value;  
+                            //}
+
+                        }
                     }
-                    //while (lists[0][j].StartsWith("IPV6"))
+                    mosText += lists[0][j] + " " + lists[i][j] + Environment.NewLine;
+
+                    //value = lists[i][j];
+                    //if(lists[i][j] == string.Empty)
+                    //{
+                    //    lists[i][j] = "-";
+                    //}
+                    //if (lists[0][j].StartsWith("IPV6") && lists[i][j] != "-")
                     //{
                     //    string[] eachValue = new string[8];
-                    //    for (int k = 0; k < eachValue.Length; k+=5)
+                    //    for (int k = 0; k / 5 < eachValue.Length; k += 5)
                     //    {
-                    //        eachValue[k / 5] = value.Substring(k, k + 4);                   
+                    //        eachValue[k / 5] = value.Substring(k, 4);
                     //    }
-                    //    for (int l = 0; l < eachValue.Length; l++)
+                    //    for (int l = 0; l < 8; l++)
                     //    {
-                    //        while (eachValue[l].StartsWith("0"))
+                    //        if (eachValue[l].StartsWith("0"))
                     //        {
-                    //            eachValue[l] = eachValue[l].Substring(1, eachValue[l].Length);
-                    //        }
-                    //        value += eachValue[l] + ":";
+                    //            eachValue[l] = eachValue[l].Substring(1); 
+                    //            lists[i][j] += eachValue[l] + ":";
+                    //        }  
+                    //        lists[i][j] = lists[i][j].Substring(0, lists[i][j].Length - 1);                       
                     //    }
-                    //    value = value.Substring(0, value.Length - 1);
+
+                    //    mosText += lists[0][j] + " " + lists[i][j] + Environment.NewLine;
                     //}
-                    mosText += lists[0][j] + " " + value + Environment.NewLine;
+                    //else
+                    //{
+                    //    mosText += lists[0][j] + " " + lists[i][j] + Environment.NewLine;
+                    //}
+
                 }
                 nodeFolderPath = projectFolderPath + lists[i][0];
                 mosFileName = lists[i][0] + ".mos";
